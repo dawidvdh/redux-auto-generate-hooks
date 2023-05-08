@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "../../app/store";
 import { fetchCount } from "./counterAPI";
-import { generateHooks } from "../../app/generate-hooks";
+import { useSliceHook } from "../../app/generate-hooks";
 
 export interface CounterState {
   value: number;
@@ -65,11 +65,7 @@ export const counterSlice = createSlice({
 });
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
-export const {
-  useIncrementAction,
-  useDecrementAction,
-  useIncrementByAmountAction,
-} = generateHooks(counterSlice.actions);
+export const useCounterActions = () => useSliceHook(counterSlice);
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

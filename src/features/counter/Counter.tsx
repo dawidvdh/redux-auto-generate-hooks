@@ -5,9 +5,7 @@ import {
   incrementAsync,
   incrementIfOdd,
   selectCount,
-  useIncrementAction,
-  useDecrementAction,
-  useIncrementByAmountAction,
+  useCounterActions,
 } from "./counterSlice";
 import styles from "./Counter.module.css";
 
@@ -17,9 +15,7 @@ export function Counter() {
   const [incrementAmount, setIncrementAmount] = useState("2");
 
   const incrementValue = Number(incrementAmount) || 0;
-  const [increment] = useIncrementAction();
-  const [decrement] = useDecrementAction();
-  const [incrementByAmount] = useIncrementByAmountAction();
+  const { increment, decrement, incrementByAmount } = useCounterActions();
 
   return (
     <div>
